@@ -1,0 +1,146 @@
+ANDROID: TIMER activity_main.xml
+ <?xml​ version​=​"1.0"​ encoding​=​"utf-8"​?>
+  <​LinearLayout  xmlns:android​=​"http://schemas.android.com/apk/res/android"
+     ​android:layout_width​=​"match_parent"
+     ​android:layout_height​=​"match_parent"
+     ​android:orientation​=​"vertical"
+     ​android:padding​=​"10dp"​>
+       ​<TextView
+         ​android:id​=​"@+id/tvCounter"
+         ​android:layout_marginTop​=​"150dp"
+         ​android:layout_marginBottom​=​"150dp"
+         ​android:layout_width​=​"wrap_content"
+         ​android:layout_height​=​"wrap_content"
+         ​android:gravity​=​"center"
+         ​android:layout_gravity​=​"center_horizontal"
+         ​android:textSize​=​"60sp"
+         ​android:text​=​"00:00:00"
+         ​android:textStyle​=​"bold"
+         ​android:textColor​=​"#4CAF50"​/>
+       ​<EditText
+         ​android:id​=​"@+id/etMinutes"
+         ​android:layout_width​=​"wrap_content"
+         ​android:layout_gravity​=​"center"
+         ​android:layout_height​=​"wrap_content"
+         ​android:layout_marginLeft​=​"10dp"
+         ​android:layout_marginRight​=​"10dp"
+         ​android:hint​=​"Enter Minutes!"
+         ​android:padding​=​"10dp"
+         ​android:maxLength​=​"4"
+         ​android:inputType​=​"number"
+         ​android:textSize​=​"26sp" 
+        ​android:gravity​=​"center"
+         ​android:textColor​=​"#000000"
+         ​android:textColorHint​=​"#9E9E9E"​ ​/>
+
+       ​<LinearLayout
+         ​android:layout_marginTop​=​"30dp"
+         ​android:orientation​=​"horizontal"
+         ​android:layout_width​=​"fill_parent"
+         ​android:gravity​=​"center"
+         ​android:padding​=​"10dp"
+         ​android:layout_gravity​=​"center"
+         ​android:layout_height​=​"wrap_content"​>
+
+           ​<Button
+             ​android:id​=​"@+id/btnStartStopTimer"
+             ​android:layout_width​=​"wrap_content"
+             ​android:layout_height​=​"wrap_content"
+             ​android:layout_marginRight​=​"10dp"
+             ​android:padding​=​"10dp"
+             ​android:background​=​"#009688"
+             ​android:textColor​=​"#ffffff"
+             ​android:textSize​=​"16sp"
+             ​android:text​=​"Start Timer"​ ​/>
+           ​<Button
+             ​android:id​=​"@+id/btnResetTimer"
+             ​android:layout_width​=​"wrap_content"
+             ​android:layout_height​=​"wrap_content" 
+            ​android:background​=​"#009688"
+             ​android:textColor​=​"#ffffff"
+             ​android:textSize​=​"16sp"
+             ​android:padding​=​"10dp"
+             ​android:layout_marginLeft​=​"10dp"
+             ​android:text​=​"Reset Timer"​ ​/> 
+     ​</LinearLayout>
+    </​LinearLayout​> 
+ 
+
+ 
+MainActivity.java:
+ package​ com.karanmadhu.mytimer;
+    import​ androidx.appcompat.app.AppCompatActivity;
+    import​ android.os.Bundle;
+  import​ android.os.CountDownTimer;
+  import​ android.view.View;
+  import​ android.view.WindowManager;
+  import​ android.widget.Button;
+  import​ android.widget.EditText;
+  import​ android.widget.TextView;
+  import​ android.widget.Toast;
+    import​ java.util.concurrent.TimeUnit;
+    public​ ​class​ ​MainActivity​ ​extends​ ​AppCompatActivity​ {
+       ​TextView​ ​tvCounter​;
+     ​EditText​ ​etMinutes​;
+     ​Button​ ​btnStartStopTimer​, ​btnResetTimer​;
+     ​private​ ​static​ ​CountDownTimer​ ​countDownTimer​;
+       @​Override
+     ​protected​ ​void​ ​onCreate​(​Bundle​ ​savedInstanceState​) {
+         ​super​.​onCreate​(savedInstanceState);
+         ​setContentView​(​R​.​layout​.​activity_main​);           ​// Hide status bar 
+  getWindow​().​addFlags​(​WindowManager​.​LayoutParams​.​FLAG_FULLSCREEN​) ;           ​// Hide action bar         ​getSupportActionBar​().​hide​();
+           tvCounter = ​findViewById​(​R​.​id​.​tvCounter​);
+         etMinutes = ​findViewById​(​R​.​id​.​etMinutes​);
+         btnStartStopTimer =  findViewById​(​R​.​id​.​btnStartStopTimer​);
+         btnResetTimer = ​findViewById​(​R​.​id​.​btnResetTimer​);
+           ​btnStartStopTimer​.​setOnClickListener​(​new  View.​OnClickListener​() {
+             @​Override
+             ​public​ ​void​ ​onClick​(​View​ ​view​) {
+                 ​if​ (countDownTimer == ​null​) {
+                     ​String​ ​getMinutes​ =  etMinutes​.​getText​().​toString​(); ​//Get minutes from editText                     ​//Check validation over editText
+                     ​if​ (!​getMinutes​.​equals​(​""​) &&  getMinutes​.​length​() > ​0​) {
+                         ​int​ ​noOfMinutes​ =  Integer​.​parseInt​(getMinutes);
+                         ​int​ ​milliseconds​ = noOfMinutes * ​60​ *  1000​; ​//Convert minutes into milliseconds
+                           countDownTimer = ​new  CountDownTimer​(milliseconds, ​1000​) {
+                             ​public​ ​void​ ​onTick​(​long  millisUntilFinished​) { 
+                                ​long​ ​millis​ =  millisUntilFinished; 
+                                ​//Convert milliseconds into  hour, minute and seconds
+                                 ​long​ ​hours​ =  TimeUnit​.​MILLISECONDS​.​toHours​(millis);
+                                 ​long​ ​minutes​ =  TimeUnit​.​MILLISECONDS​.​toMinutes​(millis) -    TimeUnit​.​HOURS​.​toMinutes​(hours);
+                                 ​long​ ​seconds​ =  TimeUnit​.​MILLISECONDS​.​toSeconds​(millis) -    TimeUnit​.​MINUTES​.​toSeconds​(minutes);
+                                 ​String​ ​hms​ =  String​.​format​(​"%02d:%02d:%02d"​, hours, minutes, seconds);
+                                 ​tvCounter​.​setText​(hms);
+                             }
+                               ​public​ ​void​ ​onFinish​() {
+                                   ​tvCounter​.​setText​(​"TIME'S  UP!!"​);
+                                 countDownTimer = ​null​;
+                                 ​btnStartStopTimer​.​setText​(​"Start  Timer"​);
+
+                             }
+                         }.​start​();
+                         ​btnStartStopTimer​.​setText​(​"Stop  Timer"​);​//Change Text
+                       } ​else
+                         ​Toast​.​makeText​(​getApplicationContext​(),
+                                 ​"Please enter no. of Minutes."​,
+                                 ​Toast​.​LENGTH_SHORT​).​show​();
+                 } 
+                ​else​ {
+                     ​countDownTimer​.​cancel​();
+                     countDownTimer = ​null​;
+                     ​btnStartStopTimer​.​setText​(​"Start Timer"​);
+                 }
+             }
+         });
+           ​btnResetTimer​.​setOnClickListener​(​new  View.​OnClickListener​() {
+             @​Override
+             ​public​ ​void​ ​onClick​(​View​ ​view​) {
+                 ​if​ (countDownTimer != ​null​) {
+                     ​countDownTimer​.​cancel​();
+                     countDownTimer = ​null​;
+                 }
+                 ​btnStartStopTimer​.​setText​(​"Start Timer"​);
+                 ​tvCounter​.​setText​(​"00:00:00"​);
+             }
+         });
+     }
+  }

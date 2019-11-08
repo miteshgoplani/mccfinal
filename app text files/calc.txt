@@ -1,0 +1,424 @@
+CALCULATOR
+XML FILE:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="7"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/btn8"
+        app:layout_constraintTop_toTopOf="@+id/btn9" />
+
+    <Button
+        android:id="@+id/btn9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="440dp"
+        android:text="9"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn8"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="0"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn3"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn4"
+        app:layout_constraintTop_toTopOf="@+id/btn3" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn5"
+        app:layout_constraintTop_toTopOf="@+id/btn3" />
+
+    <Button
+        android:id="@+id/btnDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="."
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn2"
+        app:layout_constraintTop_toTopOf="@+id/btn0" />
+
+    <Button
+        android:id="@+id/btnEqu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="="
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn1"
+        app:layout_constraintTop_toTopOf="@+id/btnDot" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="3"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn9"
+        app:layout_constraintTop_toBottomOf="@+id/btn6" />
+
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="6"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn9"
+        app:layout_constraintTop_toBottomOf="@+id/btn9" />
+
+    <Button
+        android:id="@+id/btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn8"
+        app:layout_constraintTop_toTopOf="@+id/btn6" />
+
+    <Button
+        android:id="@+id/btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btn7"
+        app:layout_constraintTop_toTopOf="@+id/btn5" />
+
+    <Button
+        android:id="@+id/btn8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginLeft="105dp"
+        android:text="8"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn9" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="+"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn7"
+        app:layout_constraintTop_toTopOf="@+id/btn9" />
+
+    <Button
+        android:id="@+id/btnMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btnAdd"
+        app:layout_constraintTop_toTopOf="@+id/btn4" />
+
+    <Button
+        android:id="@+id/btnMul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btnMin"
+        app:layout_constraintTop_toTopOf="@+id/btn3" />
+
+    <Button
+        android:id="@+id/btnDiv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/btnMul"
+        app:layout_constraintTop_toTopOf="@+id/btnDot" />
+
+    <TextView
+        android:id="@+id/ans"
+        android:layout_width="379dp"
+        android:layout_height="229dp"
+        android:layout_marginTop="40dp"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+JAVA FILE
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    Button b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,badd,bmin,bdiv,bmul,bdot,bequ;
+    TextView ans;
+    double var1,var2;
+    boolean add,sub,mul,div;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b0 = (Button)findViewById(R.id.btn0);
+        b1 = (Button)findViewById(R.id.btn1);
+        b2 = (Button)findViewById(R.id.btn2);
+        b3 = (Button)findViewById(R.id.btn3);
+        b4 = (Button)findViewById(R.id.btn4);
+        b5 = (Button)findViewById(R.id.btn5);
+        b6 = (Button)findViewById(R.id.btn6);
+        b7 = (Button)findViewById(R.id.btn7);
+        b8 = (Button)findViewById(R.id.btn8);
+        b9 = (Button)findViewById(R.id.btn9);
+        badd = (Button)findViewById(R.id.btnAdd);
+        bmin = (Button)findViewById(R.id.btnMin);
+        bdiv = (Button)findViewById(R.id.btnDiv);
+        bmul = (Button)findViewById(R.id.btnMul);
+        bdot = (Button)findViewById(R.id.btnDot);
+        bequ = (Button)findViewById(R.id.btnEqu);
+
+        ans = (TextView)findViewById(R.id.ans);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"1");
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"2");
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"3");
+            }
+        });
+
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"4");
+            }
+        });
+
+        b5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"5");
+            }
+        });
+
+        b6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"6");
+            }
+        });
+
+        b7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"7");
+            }
+        });
+
+        b8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"8");
+            }
+        });
+
+        b9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"9");
+            }
+        });
+
+        b0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"0");
+            }
+        });
+
+        bdot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+".");
+            }
+        });
+
+        badd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var1 = Double.parseDouble(ans.getText()+"");
+                add = true;
+                ans.setText(null);
+            }
+        });
+
+        bmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var1 = Double.parseDouble(ans.getText()+"");
+                sub = true;
+                ans.setText(null);
+            }
+        });
+
+        bmul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var1 = Double.parseDouble(ans.getText()+"");
+                mul = true;
+                ans.setText(null);
+            }
+        });
+
+        bdiv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var1 = Double.parseDouble(ans.getText()+"");
+                div = true;
+                ans.setText(null);
+            }
+        });
+
+        bequ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                var2 = Double.parseDouble(ans.getText()+"");
+                if(add==true)
+                {
+                    ans.setText(var1+var2+"");
+                    add=false;
+                }
+                if(sub==true)
+                {
+                    ans.setText(var1-var2+"");
+                    sub=false;
+                }
+                if(mul==true)
+                {
+                    ans.setText(var1*var2+"");
+                    mul=false;
+                }
+                if(div==true)
+                {
+                    ans.setText(var1/var2+"");
+                    div=false;
+                }
+            }
+        });
+
+
+    }
+}
+
+
+
+
+
+ANDROID : CALCULATOR   ​(This code works for one digit numbers only) MainActivity.xml: <? ​ xml version=​"1.0" ​encoding=​"utf-8"​?> <​android.support.constraint.ConstraintLayout xmlns:​android​=​"http://schemas.android.com/apk/res/android"    ​xmlns:​app​=​"http://schemas.android.com/apk/res-auto"    ​xmlns:​tools​=​"http://schemas.android.com/tools"    ​android​:layout_width=​"match_parent"    ​android​:layout_height=​"match_parent"    ​tools​:context=​".MainActivity"​> 
+    <​EditText        ​android​:id=​"@+id/output"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"28dp"        ​android​:ems=​"10"        ​android​:inputType=​"textPersonName"        ​android​:text=​""        ​app​:layout_constraintEnd_toEndOf=​"parent"        ​app​:layout_constraintStart_toStartOf=​"parent"        ​app​:layout_constraintTop_toTopOf=​"parent" ​/> 
+    <​Button        ​android​:id=​"@+id/plus"        ​android​:layout_width=​"0dp"        ​android​:layout_height=​"44dp"        ​android​:layout_marginStart=​"16dp"        ​android​:layout_marginLeft=​"16dp"        ​android​:layout_marginEnd=​"28dp"        ​android​:layout_marginRight=​"28dp"        ​android​:text=​"+"        ​app​:layout_constraintBaseline_toBaselineOf=​"@+id/minus"        ​app​:layout_constraintEnd_toStartOf=​"@+id/minus"        ​app​:layout_constraintStart_toStartOf=​"parent" ​/> 
+    <​Button        ​android​:id=​"@+id/minus"        ​android​:layout_width=​"0dp"        ​android​:layout_height=​"49dp"        ​android​:layout_marginTop=​"21dp"        ​android​:layout_marginEnd=​"32dp"        ​android​:layout_marginRight=​"32dp"        ​android​:layout_marginBottom=​"36dp"        ​android​:text=​"-" 
+       ​app​:layout_constraintBottom_toTopOf=​"@+id/num2"        ​app​:layout_constraintEnd_toStartOf=​"@+id/mul"        ​app​:layout_constraintStart_toEndOf=​"@+id/plus"        ​app​:layout_constraintTop_toBottomOf=​"@+id/output" ​/> 
+    <​Button        ​android​:id=​"@+id/mul"        ​android​:layout_width=​"0dp"        ​android​:layout_height=​"45dp"        ​android​:layout_marginEnd=​"37dp"        ​android​:layout_marginRight=​"37dp"        ​android​:text=​"*"        ​app​:layout_constraintBaseline_toBaselineOf=​"@+id/minus"        ​app​:layout_constraintEnd_toStartOf=​"@+id/div"        ​app​:layout_constraintStart_toEndOf=​"@+id/minus" ​/> 
+    <​Button        ​android​:id=​"@+id/div"        ​android​:layout_width=​"0dp"        ​android​:layout_height=​"0dp"        ​android​:layout_marginEnd=​"30dp"        ​android​:layout_marginRight=​"30dp"        ​android​:text=​"/"        ​app​:layout_constraintBottom_toBottomOf=​"@+id/mul"        ​app​:layout_constraintEnd_toEndOf=​"parent"        ​app​:layout_constraintStart_toEndOf=​"@+id/mul"        ​app​:layout_constraintTop_toTopOf=​"@+id/mul" ​/> 
+    <​Button        ​android​:id=​"@+id/num1"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginStart=​"16dp"        ​android​:layout_marginLeft=​"16dp"        ​android​:layout_marginTop=​"36dp"        ​android​:text=​"1"        ​app​:layout_constraintStart_toStartOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/minus" ​/> 
+    <​Button        ​android​:id=​"@+id/equal"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"31dp"        ​android​:layout_marginEnd=​"30dp"        ​android​:layout_marginRight=​"30dp"        ​android​:text=​"="        ​app​:layout_constraintEnd_toEndOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num9" ​/> 
+ 
+   <​Button        ​android​:id=​"@+id/num0"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"24dp"        ​android​:text=​"0"        ​app​:layout_constraintStart_toStartOf=​"@+id/num8"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num8" ​/> 
+    <​Button        ​android​:id=​"@+id/num8"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"40dp"        ​android​:text=​"8"        ​app​:layout_constraintStart_toStartOf=​"@+id/num5"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num5" ​/> 
+    <​Button        ​android​:id=​"@+id/clear"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginStart=​"16dp"        ​android​:layout_marginLeft=​"16dp"        ​android​:layout_marginTop=​"22dp"        ​android​:text=​"C"        ​app​:layout_constraintStart_toStartOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num7" ​/> 
+    <​Button        ​android​:id=​"@+id/num9"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"33dp"        ​android​:layout_marginEnd=​"30dp"        ​android​:layout_marginRight=​"30dp"        ​android​:text=​"9"        ​app​:layout_constraintEnd_toEndOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num6" ​/> 
+    <​Button        ​android​:id=​"@+id/num4"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginStart=​"16dp"        ​android​:layout_marginLeft=​"16dp"        ​android​:layout_marginTop=​"26dp"        ​android​:text=​"4"        ​app​:layout_constraintStart_toStartOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num1" ​/> 
+
+    <​Button        ​android​:id=​"@+id/num7"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginStart=​"16dp"        ​android​:layout_marginLeft=​"16dp"        ​android​:layout_marginTop=​"40dp"        ​android​:text=​"7"        ​app​:layout_constraintStart_toStartOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num4" ​/> 
+    <​Button        ​android​:id=​"@+id/num6"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"33dp"        ​android​:layout_marginEnd=​"30dp"        ​android​:layout_marginRight=​"30dp"        ​android​:text=​"6"        ​app​:layout_constraintEnd_toEndOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num3" ​/> 
+    <​Button        ​android​:id=​"@+id/num5"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"26dp"        ​android​:text=​"5"        ​app​:layout_constraintStart_toStartOf=​"@+id/num2"        ​app​:layout_constraintTop_toBottomOf=​"@+id/num2" ​/> 
+    <​Button        ​android​:id=​"@+id/num2"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginStart=​"37dp"        ​android​:layout_marginLeft=​"37dp"        ​android​:layout_marginTop=​"106dp"        ​android​:text=​"2"        ​app​:layout_constraintStart_toStartOf=​"@+id/minus"        ​app​:layout_constraintTop_toBottomOf=​"@+id/output" ​/> 
+    <​Button        ​android​:id=​"@+id/num3"        ​android​:layout_width=​"wrap_content"        ​android​:layout_height=​"wrap_content"        ​android​:layout_marginTop=​"42dp"        ​android​:layout_marginEnd=​"30dp"        ​android​:layout_marginRight=​"30dp" 
+       ​android​:text=​"3"        ​app​:layout_constraintEnd_toEndOf=​"parent"        ​app​:layout_constraintTop_toBottomOf=​"@+id/div" ​/> 
+ </​android.support.constraint.ConstraintLayout​> MainActivity.java: 
+ package ​com.example.calculatormcc; 
+ import ​android.support.v7.app.AppCompatActivity; import ​android.os.Bundle; import ​android.view.View; import ​android.widget.Button; import ​android.widget.EditText; import ​android.widget.Toast; 
+ public class ​MainActivity ​extends ​AppCompatActivity {    ​Button ​num1​, ​num2​, ​num3​, ​num4​, ​num5​, ​num6​, ​num7​, ​num8​, ​num9​, ​num0​, ​plus​, ​minus​, mul​, ​div​, ​equal​,​clear​;    EditText ​output​;    String ​curr​;    ​int ​ip1​, ​ip2​;    String ​op​; 
+    ​@Override    ​protected void ​onCreate(Bundle savedInstanceState) {        ​super​.onCreate(savedInstanceState);        setContentView(R.layout.​activity_main ​ ); 
+            ​num0 ​= findViewById(R.id.​num0 ​ );            ​num1 ​= findViewById(R.id.​num1 ​ );            ​num2 ​= findViewById(R.id.​num2 ​ );            ​num3 ​= findViewById(R.id.​num3 ​ );            ​num4 ​= findViewById(R.id.​num4 ​ );            ​num5 ​= findViewById(R.id.​num5 ​ );            ​num6 ​= findViewById(R.id.​num6 ​ );            ​num7 ​= findViewById(R.id.​num7 ​ );            ​num8 ​= findViewById(R.id.​num8 ​ );            ​num9 ​= findViewById(R.id.​num9 ​ );            ​equal ​= findViewById(R.id.​equal ​ );            ​plus ​= findViewById(R.id.​plus ​ );            ​minus ​= findViewById(R.id.​minus ​ );            ​mul ​= findViewById(R.id.​mul ​ );            ​div ​= findViewById(R.id.​div ​ );            ​clear ​= findViewById(R.id.​clear ​ );            ​output ​= findViewById(R.id.​output ​ ); //similar function for all           ​ ​num0​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View v) { 
+                   ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'0'​;                    ​output​.setText(​curr​); 
+                } 
+            }); 
+            ​num1​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'1'​;                    ​output​.setText(​curr​);                } }); 
+            ​num2​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'2'​;                    ​output​.setText(​curr​);                }            }); 
+            ​num3​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'3'​;                    ​output​.setText(​curr​);                }            }); 
+            ​num4​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'4'​;                    ​output​.setText(​curr​);                }            }); 
+            ​num5​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'5'​;                    ​output​.setText(​curr​);                } 
+           }); 
+            ​num6​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'6'​;                    ​output​.setText(​curr​);                }            }); 
+            ​num7​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'7'​;                    ​output​.setText(​curr​);                }            }); 
+            ​num8​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'8'​;                    ​output​.setText(​curr​);                }            }); 
+            ​num9​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'9'​;                    ​output​.setText(​curr​);                }            }); 
+            ​plus​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'+'​;                    ​output​.setText(​curr​);                }            }); 
+            ​minus​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) { 
+                   ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'-'​;                    ​output​.setText(​curr​);                }            }); 
+            ​mul​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'*'​;                    ​output​.setText(​curr​);                }            }); 
+            ​div​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​curr ​= ​output​.getText().toString();                    ​curr​=​curr​+​'/'​;                    ​output​.setText(​curr​);                }            }); 
+            ​clear​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) {                    ​output​.setText(​""​);                }            }); 
+            ​equal​.setOnClickListener(​new ​View.OnClickListener() {                ​@Override                ​public void ​onClick(View view) { 
+                   ​ ​curr ​= ​output​.getText().toString();                    ​if ​(​curr​.length()>​3​)                    {                        Toast.​makeText ​ (getApplicationContext(), ​"Please enter two operands only!"​, Toast.​LENGTH_LONG ​ ).show();                    }                    ​else                    ​{                        ​ip1 ​= Integer.​parseInt ​ (​curr​.substring(​0​,​1​));                        ​ip2 ​= Integer.​parseInt ​ (​curr​.substring(​2​,​3​));                        ​op ​= ​curr​.substring(​1​,​2​); 
+                        ​switch​(​op​)                        {                            ​case ​"+" ​: ​output​.setText(​ip1​+​ip2​+​""​); ​break​; 
+                           ​case ​"-" ​: ​output​.setText(​ip1​-​ip2​+​""​); ​break​;                            ​case ​"*" ​: ​output​.setText(​ip1​*​ip2​+​""​); ​break​;                            ​case ​"/" ​: ​output​.setText(​ip1​/​ip2​+​""​); ​break​;                        } 
+                    }                }            }); 
+        } } 
