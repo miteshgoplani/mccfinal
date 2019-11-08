@@ -1,0 +1,64 @@
+App.js
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./HomeScreen";
+import Page1 from "./Page1";
+import Page2 from "./Page2";
+
+const navigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Page1: Page1,
+    Page2: Page2
+  },
+  {
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+      title: "App"
+    }
+  }
+); 
+export default createAppContainer(navigator);
+Page1.js
+import React from "react";
+import { Text, StyleSheet, View } from "react-native";
+function Page1() {
+  return (
+    <View style={styles.viewStyle}>
+      <Text style={styles.textStyle}>Welcome to Page 1</Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  viewStyle: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center"
+  },
+  textStyle: {
+    fontSize: 30
+  }
+});
+export default Page1;
+
+Page2.js
+import React from "react";
+import { Text, StyleSheet, View } from "react-native";
+function Page2() {
+  return (
+    <View style={styles.viewStyle}>
+      <Text style={styles.textStyle}>Welcome to Page 2</Text>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  viewStyle: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center"
+  },
+  textStyle: {
+    fontSize: 30
+  }
+});
+export default Page2;

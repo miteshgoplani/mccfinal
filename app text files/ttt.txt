@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity">
+
+   <TextView
+       android:id="@+id/tv1"
+       android:layout_width="match_parent"
+       android:textSize="20dp"
+       android:layout_height="wrap_content"
+       android:text="Player 1 (X)" />
+
+   <TextView
+       android:id="@+id/tv2"
+       android:layout_width="match_parent"
+       android:textSize="20dp"
+       android:layout_height="wrap_content"
+       android:text="Player 2 (O)" />
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_marginTop="50dp"
+       android:layout_height="wrap_content">
+
+
+       <Button
+           android:id="@+id/btn00"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+
+       <Button
+           android:id="@+id/btn01"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+
+       <Button
+           android:id="@+id/btn02"
+           android:layout_width="wrap_content"
+           android:layout_marginLeft="30dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+   </LinearLayout>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_marginTop="50dp"
+       android:layout_height="wrap_content">
+
+
+       <Button
+           android:id="@+id/btn10"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+
+       <Button
+           android:id="@+id/btn11"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+
+       <Button
+           android:id="@+id/btn12"
+           android:layout_width="wrap_content"
+           android:layout_marginLeft="30dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+   </LinearLayout>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_marginTop="50dp"
+       android:layout_height="wrap_content">
+
+
+       <Button
+           android:id="@+id/btn20"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+
+       <Button
+           android:id="@+id/btn21"
+           android:layout_marginLeft="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+
+       <Button
+           android:id="@+id/btn22"
+           android:layout_width="wrap_content"
+           android:layout_marginLeft="30dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="" />
+   </LinearLayout>
+</LinearLayout>
+package com.example.tictactoeee;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+   TextView tv1,tv2;
+   private Button [][] btn=new Button[3][3];
+   private int roundCount=0;
+   private Boolean player1Tern=true;
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       tv1=findViewById(R.id.tv1);
+       tv2=findViewById(R.id.tv2);
+       for(int i=0;i<3;i++)
+       {
+           for(int j=0;j<3;j++)
+           {
+               String id_name="btn"+i+j; //btn_00 ,btn_01,btn_02
+               int btnId=this.getResources().getIdentifier(id_name,"id",getPackageName());
+               btn[i][j]=findViewById(btnId); //findViewById(R.id.btn_00);
+               btn[i][j].setOnClickListener(MainActivity.this);
+           }
+       }
+   }//end of protected
+   @Override
+   public void onClick(View v){
+       if(player1Tern){
+           ((Button)v).setText("X");
+           ((Button)v).setEnabled(false);
+       }
+       else {
+           ((Button) v).setText("O");
+           ((Button) v).setEnabled(false);
+       }
+       roundCount++;
+       if(chechForWin()){
+           if(player1Tern){
+               Toast.makeText(this, "Player 1 wins", Toast.LENGTH_SHORT).show();
+               resertBoard();
+           }
+           else{
+               Toast.makeText(this, "Player 2 wins", Toast.LENGTH_SHORT).show();
+               resertBoard();
+           }
+       } else if(roundCount==9){
+           Toast.makeText(this, "Draw", Toast.LENGTH_SHORT).show();
+           resertBoard();
+       }else {
+           player1Tern = !player1Tern;
+           }
+       }//end of onClick
+       private void resertBoard(){
+           for(int i=0;i<3;i++){
+               for (int j=0;j<3;j++){
+                   btn[i][j].setText("");
+                   btn[i][j].setEnabled(true);
+               }
+           }
+           roundCount=0;
+           player1Tern=true;
+       }//end of resertBoard
+       private boolean chechForWin() {
+           String field[][] = new String[3][3];
+           for (int i = 0; i < 3; i++) {
+               for (int j = 0; j < 3; j++) {
+                   field[i][j] = btn[i][j].getText().toString();
+               }
+           }
+           //for rows
+           for (int i = 0; i < 3; i++) {
+               if (field[i][0].equals(field[i][1]) && field[i][0].equals(field[i][2]) && !(field[i][0].equals(""))) {
+                   return true;
+               }
+           }
+           //for column
+           for (int i = 0; i < 3; i++) {
+               if (field[0][i].equals(field[1][i]) && field[0][i].equals(field[2][i]) && !(field[0][i].equals(""))) {
+                   return true; }
+           }
+           //for diagonal
+           if(field[0][0].equals(field[1][1])&&field[0][0].equals(field[2][2])&&!(field[0][0].equals(""))) {
+               return true; }
+           //reverse diagonal
+           if(field[0][2].equals(field[1][1])&&field[0][2].equals(field[2][0])&&!(field[0][2].equals(""))){
+               return true; }
+           return  false;
+       }//end for checkForWin
+}//end of public main
+

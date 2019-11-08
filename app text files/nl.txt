@@ -1,0 +1,69 @@
+import React from 'react';
+import { StyleSheet, Text, View , TextInput, TouchableOpacity} from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.textLogin}>Login to My App</Text>
+      <TextInput
+      style={styles.input}
+      placeholder="Username"/>
+      <TextInput
+      style={styles.input}
+      placeholder="Password"
+      secureTextEntry/>
+
+      <View style={styles.btnContainer}>
+        <TouchableOpacity style={styles.usrBtn}
+        onPress={()=>alert("Login works")}>
+          <Text style={styles.btnText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.usrBtn}>
+          <Text style={styles.btnText}
+          onPress={()=>alert("SignUp works")}>SignUp</Text>
+        </TouchableOpacity>
+      </View>
+    
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#bfe',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom:20,
+    fontSize:20,
+  },
+  input:{
+    width:"90%",
+    backgroundColor:"#fff",
+    marginBottom:10,
+    padding:15,
+  },
+  textLogin:{
+    marginBottom:10,
+    fontSize:15,
+
+  },
+  usrBtn:{
+    backgroundColor:"#55D7",
+    justifyContent:"center",
+    width:"45%",
+    padding:15,
+  },
+  btnContainer:{
+    flexDirection:"row",
+    justifyContent:"space-between",
+    width:"90%"
+
+  },
+  btnText:{
+    textAlign:"center",
+    fontSize:15,
+
+  }
+});
+

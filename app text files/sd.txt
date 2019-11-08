@@ -1,0 +1,121 @@
+Mainactivity.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".MainActivity" >
+
+   <EditText
+       android:id="@+id/etData"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:ems="10"
+       android:inputType="textPersonName"
+       android:text=""
+       android:hint="Enter Data"/>
+
+   <Button
+       android:id="@+id/btnWrite"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Write" />
+
+   <Button
+       android:id="@+id/btnRead"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Read" />
+
+   <TextView
+       android:id="@+id/tvData"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+
+       android:text="" />
+</LinearLayout>
+
+MainActivity.java:(Note only highlighted part)
+package com.example.storagemcc;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class MainActivity extends AppCompatActivity {
+   EditText etData;
+   Button btnRead,btnWrite;
+   TextView tvData;
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       etData=(EditText)findViewById(R.id.etData);
+       btnRead=(Button)findViewById(R.id.btnRead);
+       btnWrite=(Button)findViewById(R.id.btnWrite);
+       tvData=(TextView)findViewById(R.id.tvData);
+
+       btnWrite.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               String msg=etData.getText().toString();
+
+               try {
+                   File f=new File("/sdcard/myfile.txt");
+                   f.createNewFile();
+                   FileOutputStream fout=new FileOutputStream(f);
+                   fout.write(msg.getBytes());
+                   fout.close(); 	
+                   Toast.makeText(getBaseContext(),"DATA INSERTED",Toast.LENGTH_SHORT).show();
+                   etData.setText("");
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+
+
+           }
+       });
+       btnRead.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               String line;
+               StringBuffer sb=new StringBuffer();
+               try {
+                   FileInputStream fis=new FileInputStream("/sdcard/myfile.txt");
+                   InputStreamReader isr=new InputStreamReader(fis);
+                   BufferedReader br=new BufferedReader(isr);
+                   while ((line=br.readLine())!=null){
+                       sb.append(line+'\n');
+                   }
+                   tvData.setText("The text in the file is:\n"+sb.toString());
+                   br.close();
+               } catch (FileNotFoundException e) {
+                   e.printStackTrace();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+
+
+           }
+       });
+   }
+}
+AndroidManifest.xml:(Add these 2 lines)
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>

@@ -1,0 +1,51 @@
+Activity_main.xml:
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context=".MainActivity">
+
+
+   <ImageView
+       android:id="@+id/image"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+        />
+</RelativeLayout>
+
+MainActivity.java:
+package com.example.basicprimitivesmcc;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+
+       Bitmap bm = Bitmap.createBitmap(720,1280,Bitmap.Config.ARGB_8888);
+       ImageView i = (ImageView)findViewById(R.id.image);
+       i.setBackgroundDrawable(new BitmapDrawable(bm));
+       Canvas canvas=new Canvas(bm);
+       Paint paint=new Paint();
+       paint.setColor(Color.RED);
+       paint.setTextSize(50);
+       canvas.drawRect(400,200,600,700,paint);//left top right bottom
+       canvas.drawCircle(200,200,100,paint);//cx,cy,radius
+       canvas.drawRect(50,800,300,1100,paint);
+       canvas.drawLine(500,800,500,1100,paint);//startx,starty,stopx,stopy
+
+   }
+}
+

@@ -1,0 +1,125 @@
+import java.util.*;
+public class CDMATry{
+	private int[][] walshTable;
+	private int[][] copy;
+	private int[] channelSeq;
+	
+	public void setUp(int data[],int numStations){
+		walshTable=new int[numStations][numStations];
+		copy=new int[numStations][numStations];
+		
+		buildWalshTable(numStations, 0, numStations-1, 0, numStations-1, false);
+		showWalshTable(numStations);
+		
+		for(int i=0;i<numStations;i++)
+			for(int j=0;j<numStations;j++){
+				copy[i][j]=walshTable[i][j];
+				walshTable[i][j]*=data[i];
+			}
+		channelSeq=new int [numStations];
+		for (int i=0;i<numStations;i++)
+			for(int j=0;j<numStations;j++){
+				channelSeq[i]+=walshTable[j][i];
+			}
+
+	}
+	
+	public void buildWalshTable(int len,int i1,int i2,int j1,int j2,boolean val){
+		if(len==2){
+			if(!val){
+				walshTable[i1][j1]=1;
+				walshTable[i1][j2]=1;
+				walshTable[i2][j1]=1;
+				walshTable[i2][j2]=-1;
+			}
+			else{
+				walshTable[i1][j1]=-1;
+				walshTable[i1][j2]=-1;
+				walshTable[i2][j1]=-1;
+				walshTable[i2][j2]=1;		
+			}
+		
+		}
+		else{
+			int midi=(i1+i2)/2;
+			int midj=(j1+j2)/2;
+			
+			buildWalshTable(len/2,i1,midi,j1,midj,val);
+			buildWalshTable(len/2,midi+1,i2,j1,midj,val);
+			buildWalshTable(len/2,i1,midi,midj+1,j2,val);
+			buildWalshTable(len/2,midi+1,i2,midj+1,j2,!val);
+		}
+	
+	}
+	public void showWalshTable(int numStations){
+		System.out.println("Walsh Table");
+		for(int i=0;i<numStations;i++)
+		{
+			for(int j=0;j<numStations;j++){
+				System.out.print(walshTable[i][j]+"\t");
+			}
+			System.out.println();
+		}
+	
+	}
+	public void listenTo(int numStations,int sourceStation){
+		int innerProduct=0;
+	for (int i=0;i< numStations;i++)
+		innerProduct+=copy[sourceStation][i]*channelSeq[i];
+	System.out.println("Data received is : "+innerProduct/numStations);
+
+	}
+		
+	public static void main(String args[]){
+		CDMATry channel= new CDMATry();
+		int numStations=4;
+		
+		int[] data=new int[numStations];
+		data[0]=-1;
+		data[1]=-1;
+		data[2]=0;
+		data[3]=1;
+		channel.setUp(data,numStations);
+		int sourceStation=3;
+		channel.listenTo(numStations,sourceStation);
+	
+	}
+}
+
+def mult(c,d):
+ return list(map(lambda x : x * d, c))
+
+c1=[1,1,1,1]
+c2=[1,-1,1,-1]
+c3=[1,1,-1,-1]
+c4=[1,-1,-1,1]
+C=[c1,c2,c3,c4]
+
+d=[int(x) for x in input("Enter data bits for 4 channels:").split()]
+result=[]
+for i in range(4):
+ result.append(mult(C[i],d[i]))
+
+print(result)
+channel=[]
+for i in range(4):
+ res=0
+ for j in range(4):
+   res+=result[j][i]
+ channel.append(res)
+
+station=int(input("Enter station you want to listen:"))
+
+res2=0
+for i in range(4):
+ res2+=channel[i]*C[station-1][i]
+
+print("Data bit transmitted:",res2//4)
+
+Output:
+Enter data bits for 4 channels:-1 -1 0 1
+Enter station you want to listen:2
+Data bit transmitted: -1
+
+
+
